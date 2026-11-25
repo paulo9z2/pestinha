@@ -1,0 +1,36 @@
+{
+  "_ajuda": "KATIE: a hacker parceira do Paulo. Mesma rede, outra semente. Curiosa e focada (trabalha junto), calma com carinho, sass em post-its, nunca palhaça. Pouca frustração — protesta em cartazes técnicos, não em revolução.",
+  "nome": "KATIE",
+  "seed": 9,
+  "temperamento": {
+    "CURIOUS": 1.4,
+    "NOVELTY->CURIOUS": 1.3,
+    "WEB->CURIOUS": 1.2,
+    "WORK->FOCUS": 1.5,
+    "FOCUS": 1.2,
+    "CARESS->CALM": 1.4,
+    "CARESS->PLAYFUL": 0.8,
+    "POKE->PLAYFUL": 1.2,
+    "PLAYFUL": 0.9,
+    "SILENCE->QUIET": 1.3,
+    "LONELY->GLOOM": 0.9,
+    "DRAG->FRUSTRATION": 0.4,
+    "IMPACT->FRUSTRATION": 0.8,
+    "DISMISS->FRUSTRATION": 0.8,
+    "RECUSA->FRUSTRATION": 1.1,
+    "TOY_TAKEN->GLOOM": 0.8
+  },
+  "brincadeira": {
+    "bola": 0.7,
+    "arremesso": 0.5,
+    "postit": 1.4
+  },
+  "reacao_notebook": "bravo",
+  "aparencia": {
+    "moldura": "#1d1d26",
+    "casca": "#0d0d12",
+    "tela": "#101018",
+    "olho": "#00d2ff",
+    "brilho": "#7fe9ff"
+  }
+}

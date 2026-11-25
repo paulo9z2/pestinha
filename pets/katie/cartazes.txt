@@ -1,0 +1,47 @@
+[reclamacao]
+outro bug às 3 da manhã?
+alguém mexeu no gateway?
+esse warning me irrita, sim
+deploy sem teste é confissão
+[manifestacao]
+dados não se perdem
+verdade acima do protocolo
+teste primeiro, depois deploy
+o log não mente
+[greve]
+greve até o backup rodar
+parada técnica: sem sexta
+on strike pelo .gitignore
+[revolucao]
+menos SaaS, mais local
+baixe o preço dos prompts
+o código dos esporos não aguenta
+abaixo o commit de linha única
+[acordo]
+acordo: café + commit
+paz assinada em diff
+acato a ordem: rodar de novo
+[desistiu]
+tá. desisti dessa
+recuo estratégico, não derrota
+deixa o opencode com isso
+[saudade]
+senti falta do teclado
+o terminal está quieto demais
+[chorando]
+build vermelho e eu no canto
+stack trace infinito
+o CI quebrou de novo
+[abandonado]
+o cron morre sem monitor
+janela sem dono vira zombie
+[volto]
+volto já, só o diagnóstico
+um segundo: cache frio
+[castigo]
+castigo: rever o diff inteiro
+aceito: é só reorganizar
+[xingamento]
+no no no no no
+*por quê, por quê*
+alguém explica essa doc?

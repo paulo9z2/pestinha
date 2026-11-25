@@ -1,0 +1,21 @@
+# Post-its da KATIE — uma frase por linha
+Tá. É isso.
+Holy crow — funcionou.
+Quiznak: bug bizarro confirmado.
+vamos rodar de novo, com calma.
+Backup feito. Dados não se perdem.
+A máquina é sua. E minha também.
+Ollama: temperatura 0.2, *agora*.
+Menos deploy, mais teste.
+O código não mente. A doc às vezes mente.
+Instinto é bom; dados são melhores.
+Verdade > protocolo.
+Sem piada agora — o build tá vermelho.
+A família (e os dados) não se abandona.
+Um comando, uma vez. Não repito.
+Tá. Eu explico só mais uma vez.
+Processo do gateway é sagrado.
+Silêncio carregado: a resposta é um link.
+Café primeiro. Código depois.
+Se o log tá limpo, dorme tranquilo.
+Não é magia, é subprocess.
