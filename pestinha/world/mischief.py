@@ -104,6 +104,12 @@ class MischiefEngine(QObject):
             thing.clicked.connect(self._on_click)
         return thing
 
+    def make_note(self, text):
+        """Fork local (11/2026): post-it com texto exato (lembrete com hora marcada)."""
+        thing = NoteThing(text, small=False)
+        thing.clicked.connect(self._on_click)
+        return thing
+
     # ---------------- colocação ----------------
 
     def show_in_corner(self, thing, bounds, cursor):

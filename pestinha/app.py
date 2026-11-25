@@ -64,6 +64,7 @@ from .core.protesto import Protesto
 from .log import log
 from .mind.castigo_ctl import CastigoController
 from .mind.festa import FestaController
+from .mind.lembretes import Lembretes
 from .mind.mesa import MesaController, pull
 from .mind.mischief_ctl import MischiefController
 from .mind.protest_ctl import ProtestController
@@ -177,6 +178,10 @@ class PestinhaApp(SessaoMixin, InteracaoMixin, QObject):
         self.floats = FloatManager(self)
         self.mischief_ctl.postit_weight = Play(self.play_weights).weight("postit")
         self.festa = FestaController(self.debugging)
+        # Fork local (11/2026): post-its com hora marcada (ex.: 19:00 = academia)
+        self.lembretes = Lembretes(self.conteudo.resolver("lembretes.json"),
+                                   self.pet_paths.episodes.parent / "lembretes.json",
+                                   self.debugging)
         self.mesa = MesaController(self.debugging, self)
         self.castigo = CastigoController(self, self.debugging)
         paper = load_sprite(self.conteudo.bolinha_papel)
@@ -581,6 +586,15 @@ class PestinhaApp(SessaoMixin, InteracaoMixin, QObject):
 
     def maybe_mischief(self, now, dt, bounds, cursor, motores):
         """Decide se vai aprontar uma travessura agora (não aprontar de castigo nem dormindo)."""
+        # Fork local (11/2026): hora marcada (ex.: 19:00) — chega com o pet de castigo
+        if self.perms["ativo"] and self.perms["travessuras"] and self.perms["bilhetes"]:
+            aviso = self.lembretes.devido()
+            if aviso:
+                hora, texto = aviso
+                note = self.mischief.make_note(texto)
+                if note is not None and self.mischief.allowed(self.perms, self.prof, self.fullscreen) \
+                        and self.mischief.show_in_corner(note, bounds, cursor):
+                    self.lembretes.registrar(hora)
         if self.castigo.dentro:                      # de castigo não apronta (e não deixa objeto solto)
             return
         self.mischief_ctl.maybe_act(
