@@ -17,12 +17,14 @@
 | 72 memes da KATIE | `pets/katie/memes/<emoção>/` | Faces por emoção renderizadas em Blender (script abaixo), na paleta do personagem. O seletor do app ignora o nome do arquivo e escolhe aleatório na pasta da emoção — nada de código foi tocado para isso funcionar. |
 | Pipeline de memes | `tools/gerar_memes_katie.py` + `tools/contact_sheet_katie.py` | Script headless (Blender `--background`) que regenera as 72 faces em ~1 minuto e monta uma contact sheet para revisão estética. |
 | Launcher sem console | `rodar-pestinha.bat` | Duplo clique para abrir o pet no Windows sem janela de terminal. |
-| Patch: monitor fantasma | `pestinha/app.py`, `pestinha/world/arrastavel.py` | O Windows às vezes registra um segundo monitor invisível; a física usava todas as telas e o pet podia ficar preso na tela fantasma. As 4 funções marcadas com o comentário `Fork local (11/2026)` passam a usar só a tela primária. **Única alteração de código deste fork.** Reverter se for ligar um segundo monitor de verdade. |
+| **Lembretes (avisos personalizados)** | `pestinha/mind/lembretes.py` + `make_note()` em `pestinha/world/mischief.py` + gancho em `pestinha/app.py` + `pets/katie/lembretes.json` | Post-its com hora marcada: cada hora de `pets/<pet>/lembretes.json` cola um bilhete **1x/dia** (se o app abrir atrasado, o aviso sai no catch-up). Regra fixa, fora da rede neural; estado do dia fica em `memory/` (fora do repo). Exemplo da KATIE: 19:00 academia. Como usar: seção [Avisos personalizados](#avisos-personalizados). |
+| Patch: monitor fantasma | `pestinha/app.py`, `pestinha/world/arrastavel.py` | O Windows às vezes registra um segundo monitor invisível; a física usava todas as telas e o pet podia ficar preso na tela fantasma. As 4 funções marcadas com o comentário `Fork local (11/2026)` passam a usar só a tela primária. Reverter se for ligar um segundo monitor de verdade. |
 | Teste adaptado | `tests/test_jorge.py` | Lista de pets hardcoded: adicionado `katie` em 2 lugares para o personagem passar nos mesmos testes de integridade dos originais. |
+| Testes novos | `tests/test_lembretes.py` | 8 testes do módulo de lembretes (hora marcada, 1x/dia, catch-up, estado entre reinícios, formato inválido). |
 
 **O que NÃO foi alterado:** a rede neural (470 neurônios), os 15 motores, o
 sistema de aprendizado, os personagens Bryan e Jorge, privacidade, testes
-originais (a suíte passa completa: 400 passed / 16 skipped), licença e
+originais (a suíte passa completa: 408 passed / 16 skipped), licença e
 estrutura do projeto.
 
 ---
@@ -148,6 +150,25 @@ Detalhes em [PRIVACIDADE.md](PRIVACIDADE.md).
 - **Programas que ele reconhece:** `assets/comum/programas.json` soma programas à lista de trabalho, jogo, música etc.
 - **Personalidade:** `pets/bryan.json` (semente da rede, temperamento, pesos de brincadeira, reação ao notebook).
 - **Números do comportamento:** `pestinha/ajustes.py`, todos validados ao abrir.
+
+### Avisos personalizados
+
+Post-its com hora marcada: o pet cola um bilhete com o texto de cada horário
+do arquivo `pets/<pet>/lembretes.json`, **uma vez por dia**:
+
+```json
+[
+  {"hora": "19:00", "texto": "Academia! Bora treinar."},
+  {"hora": "6:30", "texto": "Acorda, humana."}
+]
+```
+
+- `"19:00"` ou `"6"` (minutos opcionais); horário inválido é ignorado.
+- Se o app estava fechado na hora certa, o aviso sai quando ele abre (atrasado,
+  mas sai). O dia já avisado fica salvo em `memory/`, então fechar e reabrir o
+  app não repete o bilhete.
+- Para a KATIE, o arquivo já vem com o lembrete das 19:00.
+- Para adicionar um horário: edite o json e reabra o app.
 
 ## Estrutura
 
